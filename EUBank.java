@@ -1,25 +1,38 @@
 /**
  * Created by VINNI on 23.11.16.
  */
-public class EUBank extends Bank{
+public class EUBank extends Bank
+{
+
 
     @Override
-    void printCommission()
-    {
-
-        System.out.println("Валюта операции:"+Currence.USD);
-        System.out.println("Лимит снятия:2000");
-        System.out.println("Лимит пополнения:10 000");
-        System.out.println("Месячная ставка: 0%");
-        System.out.println("комиссия: 5% до 1000 USD и 7% больше 1000 USD");
-        System.out.println("\n");
-
-
-        System.out.println("Валюта операции:"+Currence.EUR);
-        System.out.println("Лимит снятия:2200");
-        System.out.println("Лимит пополнения:20 000");
-        System.out.println("Месячная ставка: 1%");
-        System.out.println("комиссия: 2% до 1000 USD и 4% больше 1000 USD");
-
+    public int getLimitOfWithdrawal() {
+        if (getCurrence()==Currence.USD) return 2000;
+        else return 2200;
     }
+
+    @Override
+    int getLimitOfFunding() {
+        if (getCurrence()==Currence.USD) return 10000;
+        else return 20000;
+    }
+
+    @Override
+    int getMonthlyRate() {
+        if (getCurrence()==Currence.USD) return 0;
+        else return 1;
+    }
+
+    @Override
+    int getCommission(int summ) {
+
+        if (getCurrence()==Currence.USD) {
+            if (summ<1000) return 5;
+            else return 7;
+        }
+        else{
+            if (summ<1000) return 2;
+            else return 4;}
+    }
+
 }

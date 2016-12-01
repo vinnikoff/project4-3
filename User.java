@@ -2,25 +2,26 @@
  * Created by VINNI on 23.11.16.
  */
 public class User {
-    static void out (Bank bank){
-        bank.printCommission();
+
+    private static void out (Bank bank){
+
+        bank.getLimitOfWithdrawal();
+        bank.getLimitOfFunding();
+        bank.getMonthlyRate();
+        bank.getCommission(500);
     }
+
     public static void main(String[] args){
-        String nameBankIn="usbank";//вносим название банка
-        int idBank=0;
+        //bankCountry="usbank";//вносим название банка
 
         Bank usbank = new USBank();
         Bank eubank = new EUBank();
         Bank chinabank = new ChinaBank();
 
-        if ( nameBankIn=="usbank") idBank=idBank;
-        if ( nameBankIn=="eubank") idBank=1;
-        if ( nameBankIn=="chinabank") idBank=2;
+        int id=0; // вносим id банка
 
+        Bank[] bankCountry={usbank, eubank, chinabank};
 
-        Bank[] nameBank={usbank, eubank, chinabank};
-        out(nameBank[idBank]);
-
+        out(bankCountry[id]);
     }
-
 }
